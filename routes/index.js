@@ -7,15 +7,24 @@ var expressions = {
   title: 'Express',
 };
 
+
+// will return promise - to be seperated into another file
+function fetechData() {
+  return new Promise((resolve, reject) => {
+    Note.findById('5b6ee11f8a888f073c50f18f').then((note) => {
+      expressions.note = note.text;
+
+    });
+  });
+}
+
+
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
 
-  Note.findById('5b6ee11f8a888f073c50f18f').then((note) => {
-    expressions.note = note.text;
-    res.render('index', expressions);
-  });
 
-  
+  res.render('index', expressions);
 });
 
 module.exports = router;
