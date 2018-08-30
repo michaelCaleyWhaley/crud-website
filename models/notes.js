@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+
+var mongoUrl = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017/test';
+
+mongoose.connect(mongoUrl, { useNewUrlParser: true });
 
 const Schema = mongoose.Schema;
 
