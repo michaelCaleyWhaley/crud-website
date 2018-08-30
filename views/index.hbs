@@ -1,3 +1,11 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<p>{{note}}</p>
+<p>Leave a little message</p>
+
+<form id="strap-form" autocomplete="off">
+    <input id="strap-input" type="text" name="firstname" placeholder="Enter new strap">
+    <input type="submit" value="Submit">
+</form>
+<div class="message-wrap">
+    <h2 id="old-note">{{note}}</h2>
+    <h2 id="new-note"></h2>
+</div>

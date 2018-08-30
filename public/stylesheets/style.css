@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+.message-wrap {
+  position: relative;
+}
+
+#old-note,
+#new-note {
+  transition: opacity 0.3s linear;
+}
+
+#new-note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}

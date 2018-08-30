@@ -1,30 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-var { Note } = require('../models/notes.js');
+var populateNote = require('../middleware/populateNote.js');
+var updateNote = require('../middleware/updateNote.js');
 
 var expressions = {
-  title: 'Express',
+  title: 'Message board',
 };
 
-
-// will return promise - to be seperated into another file
-function fetechData() {
-  return new Promise((resolve, reject) => {
-    Note.findById('5b6ee11f8a888f073c50f18f').then((note) => {
-      expressions.note = note.text;
-
-    });
-  });
-}
-
-
-
 /* GET home page. */
-router.get('/', (req, res, next) => {
-
-
+router.get('/', populateNote.fetchData, (req, res, next) => {
+  expressions.note = req.expressions.text;
   res.render('index', expressions);
+});
+
+router.post('/update', (req, res, next) => {
+  updateNote.updatePageNote(req.body.text).then(() => {
+    next();
+  });
+}, (req, res) => {
+  res.end();
 });
 
 module.exports = router;
