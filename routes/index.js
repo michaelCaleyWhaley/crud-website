@@ -9,8 +9,12 @@ var expressions = {
 };
 
 /* GET home page. */
-router.get('/', populateNote.fetchData, (req, res, next) => {
-  expressions.note = req.expressions.text;
+router.get('/', (req, res, next) => {
+  populateNote.fetchData().then((note) => {
+    expressions.note = note.text;
+    next();
+  });
+}, (req, res) => {
   res.render('index', expressions);
 });
 
