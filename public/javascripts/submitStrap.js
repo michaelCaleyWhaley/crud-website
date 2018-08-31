@@ -14,7 +14,7 @@ DomReady.ready(function () {
         }
 
         function resetText() {
-            oldNote.innerHTML = strapInput.value;
+            oldNote.innerHTML = newNote.innerHTML;
             oldNote.style.opacity = 1;
             newNote.style.opacity = 0;
         }
@@ -24,6 +24,7 @@ DomReady.ready(function () {
             if (strapInput.value !== "") {
                 makeHttpRequest(strapInput.value);
                 newNote.innerHTML = strapInput.value;
+                strapInput.value = "";
                 oldNote.style.opacity = 0;
                 newNote.style.opacity = 1;
 
