@@ -13,8 +13,6 @@ router.get('/', (req, res, next) => {
   populateNote.fetchData().then((note) => {
     expressions.note = note.text;
     next();
-  }).catch((error) => {
-    console.log("ERROR: " + error);
   });
 }, (req, res) => {
   res.render('index', expressions);
@@ -27,5 +25,11 @@ router.post('/update', (req, res, next) => {
 }, (req, res) => {
   res.end();
 });
+
+router.post('/create', (req, res, next) => {
+  populateNote.createNote();
+});
+
+
 
 module.exports = router;
