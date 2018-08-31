@@ -13,6 +13,8 @@ router.get('/', (req, res, next) => {
   populateNote.fetchData().then((note) => {
     expressions.note = note.text;
     next();
+  }).catch((error) => {
+    res.send(error);
   });
 }, (req, res) => {
   res.render('index', expressions);
