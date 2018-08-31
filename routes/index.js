@@ -28,6 +28,7 @@ router.post('/update', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
   populateNote.createNote();
+  res.end();
 });
 
 
