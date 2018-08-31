@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     expressions.note = note.text;
     next();
   }).catch((error) => {
-    res.send(error);
+    console.log("ERROR: " + error);
   });
 }, (req, res) => {
   res.render('index', expressions);
